@@ -1,5 +1,5 @@
 # editorconfig-ruby
-[![Build Status](http://img.shields.io/travis/stephengroat/editorconfig-ruby.svg)](https://travis-ci.org/stephengroat/editorconfig-ruby)
+[![Build Status](http://img.shields.io/travis/stephengroat/editorconfig-check.svg)](https://travis-ci.org/stephengroat/editorconfig-check)
 
 - [ ] travis
 - [ ] code coverage tool

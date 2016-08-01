@@ -14,4 +14,21 @@ module EditorConfig
     'lf' =>'\n',
     'cr' => '\r',
   }
+  def check(file)
+    line_num=0
+    text=File.open(file).read
+    text.each_line do |line|
+      
+  end
+  def check_indentation(line, indent_style)
+    indent=line[/^\s*/]
+    if indent_style == 'space' and indent=~/\t/
+      errors.add('Tab indentation found')
+      if indent.count(' ') % indent_size != 0
+        errors.add("Incorrect space indent size found")
+      end
+    else if indent_style == 'tab' and indent=~/' '/
+      errors.add('Space indentation found')
+    end
+  end
 end

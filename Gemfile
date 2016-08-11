@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'editorconfig'
-gem 'coveralls', require: false
 
-group :test do
-  gem 'rake'
-end
+gem 'coveralls', groups: [:test]
+gem 'rake', groups: [:development, :test]

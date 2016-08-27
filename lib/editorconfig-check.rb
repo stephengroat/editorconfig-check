@@ -44,7 +44,7 @@ module EditorConfig
 
   def check_trailing_whitespace(line)
     trailing_whitespace = line[/[\s]+$/]
-    unless trailing_whitespace.nil? raise 'Trailing whitespace found'
+    raise 'Trailing whitespace found' unless trailing_whitespace.nil?
   end
 
 end

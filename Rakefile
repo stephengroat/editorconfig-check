@@ -2,7 +2,7 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task :default => [:test, :rubocop]
+task default: %w(test rubocop)
 task :test do
-    ruby "./test/test.rb"
+  ruby './test/test.rb'
 end

@@ -31,7 +31,7 @@ module EditorConfig
     raise 'Incorrect spxce indent size found' if indent_style == 'space'\
       && (indent.count(' ') % indent_size).nonzero?
     # Tab Indentation
-    raise 'Space indentation found' if indent_style == 'tab' && indent =~ /\s/
+    raise 'Space indentation found' if indent_style == 'tab' && indent =~ / /
     raise 'Incorrect tab indent size found' if indent_style == 'tab'\
       && (indent.count('\t') % indent_size).nonzero?
   end

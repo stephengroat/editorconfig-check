@@ -28,15 +28,16 @@ module EditorConfig
     indent = line[/^\s*/]
     # Space indentation
     raise 'Tab indentation found' if indent_style == 'space' && indent =~ /\t/
-    raise 'Incorrect spxce indent size found' if indent_style == 'space' && (indent.count(' ') % indent_size).nonzero?
+    raise 'Incorrect spxce indent size found' if indent_style == 'space'\
+      && (indent.count(' ') % indent_size).nonzero?
     # Tab Indentation
     raise 'Space indentation found' if indent_style == 'tab' && indent =~ /\s/
-    raise 'Incorrect tab indent size found' if indent_style == 'tab' && (indent.count('\t') % indent_size).nonzero?
+    raise 'Incorrect tab indent size found' if indent_style == 'tab'\
+      && (indent.count('\t') % indent_size).nonzero?
   end
 
   def check_trailing_whitespace(line)
     trailing_whitespace = line[/[\s]+$/]
     raise 'Trailing whitespace found' unless trailing_whitespace.nil?
   end
-
 end

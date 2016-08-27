@@ -1,7 +1,7 @@
 require 'editorconfig'
 
 module EditorConfig
-  @byte_order_marks = {
+  BYTE_ORDER_MARKS = {
     '\xef\xbb\xbf' => 'utf-8-bom',
     '\xfe\xff' => 'utf-16be',
     '\xff\xfe' => 'utf-16le',
@@ -9,7 +9,7 @@ module EditorConfig
     '\xff\xfe\x00\x00' => 'utf-32le'
   }
 
-  @line_endings = {
+  LINE_ENDINGS = {
     'crlf' => '\r\n',
     'lf' => '\n',
     'cr' => '\r'

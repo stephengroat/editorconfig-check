@@ -20,8 +20,8 @@ module EditorConfig
     text = File.open(file).read
     text.each_line do |line|
       check_indentation(line, 'space')
-      rescue
-        next
+      #rescue
+      #  next
     end
   end
 

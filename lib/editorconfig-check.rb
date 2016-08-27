@@ -1,4 +1,4 @@
-require "editorconfig"
+require 'editorconfig'
 
 module EditorConfig
   @byte_order_marks = {
@@ -6,18 +6,18 @@ module EditorConfig
     '\xfe\xff' => 'utf-16be',
     '\xff\xfe' => 'utf-16le',
     '\x00\x00\xfe\xff' => 'utf-32be',
-    '\xff\xfe\x00\x00' => 'utf-32le',
+    '\xff\xfe\x00\x00' => 'utf-32le'
   }
 
   @line_endings = {
     'crlf' => '\r\n',
-    'lf' =>'\n',
-    'cr' => '\r',
+    'lf' => '\n',
+    'cr' => '\r'
   }
   
   def check(file)
-    line_num=0
-    text=File.open(file).read
+    line_num = 0
+    text = File.open(file).read
     text.each_line do |line|
       check_indentation(line, 'space')
     end
@@ -25,11 +25,11 @@ module EditorConfig
   
   def check_indentation(line, indent_style)
     indent=line[/^\s*/]
-    if indent_style == 'space' and indent=~/\t/
+    if indent_style == 'space' && indent =~ /\t/
       errors.add('Tab indentation found')
       if indent.count(' ') % indent_size != 0
         errors.add("Incorrect space indent size found")
-      elsif indent_style == 'tab' and indent=~/' '/
+      elsif indent_style == 'tab' && indent =~ /' '/
         errors.add('Space indentation found')
       end
     end

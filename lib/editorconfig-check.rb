@@ -20,18 +20,32 @@ module EditorConfig
     text = File.open(file).read
     text.each_line do |line|
       check_indentation(line, 'space')
+      rescue
+        next
     end
   end
 
-  def check_indentation(line, indent_style)
+  def check_indentation(line, indent_style, indent_size)
     indent = line[/^\s*/]
-    if indent_style == 'space' && indent =~ /\t/
-      errors.add('Tab indentation found')
-      if (indent.count(' ') % indent_size).nonzero?
-        errors.add('Incorrect space indent size found')
-      elsif indent_style == 'tab' && indent =~ /' '/
-        errors.add('Space indentation found')
+    if indent_style == 'space'
+      if indent =~ /\t/
+        raise 'Tab indentation found'
+      elsif (indent.count(' ') % indent_size).nonzero?
+        raise 'Incorrect space indent size found'
       end
+    elsif indent_style == 'tab'
+      if indent =~ /\s/
+        raise 'Space indentation found'
+      elsif (indent.count('\t') % indent_size).nonzero?
+        raise 'Incorrect tab indent size found'
+      end
+    end
+  end
+  
+  def check_trailing_whitespace(line)
+    trailing_whitespace = line[/[\s]+$/]
+    unless trailing_whitespace.nil?
+      raise 'Trailing whitespace found'
     end
   end
 end

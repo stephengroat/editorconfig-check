@@ -29,7 +29,7 @@ module EditorConfig
       errors.add('Tab indentation found')
       if indent.count(' ') % indent_size != 0
         errors.add("Incorrect space indent size found")
-      else if indent_style == 'tab' and indent=~/' '/
+      elsif indent_style == 'tab' and indent=~/' '/
         errors.add('Space indentation found')
       end
     end

@@ -34,5 +34,4 @@ module EditorConfig
       end
     end
   end
-
 end

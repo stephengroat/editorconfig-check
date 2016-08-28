@@ -16,10 +16,12 @@ module EditorConfig
   }.freeze
 
   def check(file)
-    line_num = 0
+    line_num
     text = File.open(file).read
     text.each_line do |line|
       check_indentation(line, 'space')
+      check_trailing_whitespace(line)
+      line_num += 1
       # TODO: does this need a rescue/next clause
     end
   end

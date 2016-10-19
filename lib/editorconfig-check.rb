@@ -29,13 +29,14 @@ module EditorConfig
   def check_indentation(line, indent_style, indent_size)
     indent = line[/^\s*/]
     # Space indentation
-    raise 'Tab indentation found' if indent_style == 'space' && indent =~ /\t/
-    raise 'Incorrect spxce indent size found' if indent_style == 'space'\
-      && (indent.count(' ') % indent_size).nonzero?
+    if indent_style == 'space'
+      raise 'Tab indentation found' if indent =~ /\t/
+      raise 'Incorrect spxce indent size found' if (indent.count(' ') % indent_size).nonzero?
     # Tab Indentation
-    raise 'Space indentation found' if indent_style == 'tab' && indent =~ / /
-    raise 'Incorrect tab indent size found' if indent_style == 'tab'\
-      && (indent.count('\t') % indent_size).nonzero?
+    elsif indent_style == 'tab'
+      raise 'Space indentation found' if indent =~ / /
+      raise 'Incorrect tab indent size found' if (indent.count('\t') % indent_size).nonzero?
+    end
   end
 
   def check_trailing_whitespace(line)

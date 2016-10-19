@@ -43,4 +43,8 @@ module EditorConfig
     trailing_whitespace = line[/[\s]+$/]
     raise 'Trailing whitespace found' unless trailing_whitespace.nil?
   end
+  
+  def check_end_of_line(line, end_of_line)
+    raise "Incorrect end of line found" if \LINE_ENDINGS[end_of_line]\ =~ line
+  end
 end

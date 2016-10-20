@@ -1,5 +1,5 @@
 require 'coveralls'
-require 'editorconfig_check'
+require 'editorconfig-check'
 require "test/unit"
 
 Coveralls.wear!

@@ -45,6 +45,6 @@ module EditorConfigCheck
   end
   
   def check_end_of_line(line, end_of_line)
-    raise "Incorrect end of line found" if \LINE_ENDINGS[end_of_line]\ =~ line
+    raise "Incorrect end of line found" if /LINE_ENDINGS[end_of_line]/ =~ line
   end
 end

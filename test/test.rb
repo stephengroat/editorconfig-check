@@ -6,7 +6,7 @@ Coveralls.wear!
 
 class TestEditorConfigCheck < Minitest::Test
   def test_check_trailing_whitespace
-    assert_raises(EditorConfig.check_trailing_whitespace(" "))
-    assert_nil(EditorConfig.check_trailing_whitespace(""))
+    assert_raises(EditorConfigCheck.check_trailing_whitespace(" "))
+    assert_nil(EditorConfigCheck.check_trailing_whitespace(""))
   end
 end

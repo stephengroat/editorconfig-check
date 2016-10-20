@@ -1,5 +1,5 @@
 require 'coveralls'
-require_relative '../lib/editorconfig_check.rb'
+require 'editorconfig_check'
 require "test/unit"
 
 Coveralls.wear!

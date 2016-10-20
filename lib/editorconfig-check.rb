@@ -1,6 +1,6 @@
 require 'editorconfig'
 
-module EditorConfig
+module EditorConfigCheck
   BYTE_ORDER_MARKS = {
     '\xef\xbb\xbf' => 'utf-8-bom',
     '\xfe\xff' => 'utf-16be',

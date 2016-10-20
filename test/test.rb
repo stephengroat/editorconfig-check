@@ -1,8 +1,7 @@
 require 'coveralls'
+Coveralls.wear!
 require 'editorconfig-check'
 require 'minitest/autorun'
-
-Coveralls.wear!
 
 class TestEditorConfigCheck < Minitest::Test
   def test_check_trailing_whitespace

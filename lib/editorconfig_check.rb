@@ -11,13 +11,13 @@ module EditorConfigCheck
   }.freeze
 
   @line_endings = {
-    'crlf' => '\r\n',
-    'lf' => '\n',
-    'cr' => '\r'
+    'crlf' => "\r\n",
+    'lf' => "\n",
+    'cr' => "\r"
   }.freeze
 
   @indent_types = {
-    'tab' => '\t',
+    'tab' => "\t",
     'space' => ' '
   }.freeze
 

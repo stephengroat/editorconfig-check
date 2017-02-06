@@ -32,17 +32,17 @@ module EditorConfigCheck
     end
   end
 
-  def check_indentation(line, indent_style, indent_size)
+  def self.check_indentation(line, indent_style, indent_size)
     indent = line[/^\s*/]
-    raise "Non #{indent_style} indentation found" if /(?!#{@IDENT[indent_style]})/ =~ indent 
+    raise "Non #{indent_style} indentation found" if /(?!#{@INDENT[indent_style]})/ =~ indent 
     raise 'Incorrect indent size found' if (indent.count(@INDENT[indent_style]) % indent_size).nonzero?
   end
 
-  def check_trailing_whitespace(line)
+  def self.check_trailing_whitespace(line)
     raise 'Trailing whitespace found' unless line[/[\s]+$/].nil?
   end
   
-  def check_end_of_line(line, end_of_line)
+  def self.check_end_of_line(line, end_of_line)
     raise "Incorrect end of line found" if /#{@LINE_ENDINGS[end_of_line]}/ =~ line
   end
 end

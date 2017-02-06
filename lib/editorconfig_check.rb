@@ -21,7 +21,7 @@ module EditorConfigCheck
     'space' => ' '
   }.freeze
 
-  def check(file)
+  def self.check(file)
     line_num
     text = File.open(file).read
     text.each_line do |line|
@@ -34,8 +34,8 @@ module EditorConfigCheck
   end
 
   def self.check_indentation(line, indent_type, indent_size)
-    indent = line[/^\s/]
-    puts indent
+    indent = line[/^[\t ]+/]
+    return if indent.nil?
     raise "Non #{indent_type} indentation found"\
       if /(?!#{@indent_types[indent_type]})/ =~ indent
     raise 'Incorrect indent size found'\
@@ -43,7 +43,7 @@ module EditorConfigCheck
   end
 
   def self.check_trailing_whitespace(line)
-    raise 'Trailing whitespace found' unless line[/[\s]+$/].nil?
+    raise 'Trailing whitespace found' unless line[/[\t ]+$/].nil?
   end
 
   def self.check_end_of_line(line, eol)

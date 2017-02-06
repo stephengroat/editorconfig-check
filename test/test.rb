@@ -15,7 +15,7 @@ class TestEditorConfigCheck < Minitest::Test
        { EditorConfigCheck.check_indentation(' s', 'tab', 1) }
     assert_equal('Non tab indentation found', exception.message)
     exception = assert_raises(RuntimeError)\
-       { EditorConfigCheck.check_indentation('\ts', 'space', 1) }
+       { EditorConfigCheck.check_indentation("\ts", 'space', 1) }
     assert_equal('Non space indentation found', exception.message)
     exception = assert_raises(RuntimeError)\
        { EditorConfigCheck.check_indentation(' s', 'space', 2) }

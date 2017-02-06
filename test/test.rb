@@ -1,6 +1,6 @@
 require 'coveralls'
 Coveralls.wear!
-require 'editorconfig-check'
+require 'editorconfig_check'
 require 'minitest/autorun'
 
 class TestEditorConfigCheck < Minitest::Test

@@ -1,5 +1,6 @@
 require 'editorconfig'
 
+# EditorConfig Check module
 module EditorConfigCheck
   @byte_order_marks = {
     '\xef\xbb\xbf' => 'utf-8-bom',
@@ -27,7 +28,7 @@ module EditorConfigCheck
       check_indentation(line, 'space')
       check_trailing_whitespace(line)
       check_end_of_line(line, 'lf')
-      line_num += 1
+      puts line_num += 1
       # TODO: does this need a rescue/next clause
     end
   end
@@ -44,7 +45,7 @@ module EditorConfigCheck
     raise 'Trailing whitespace found' unless line[/[\s]+$/].nil?
   end
 
-  def self.check_end_of_line(line, end_of_line)
-    raise "Incorrect end of line found" if /#{@line_endings[end_of_line]}/ =~ line
+  def self.check_end_of_line(line, eol)
+    raise 'Incorrect end of line found' if /#{@line_endings[eol]}/ =~ line
   end
 end

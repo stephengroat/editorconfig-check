@@ -16,7 +16,7 @@ module EditorConfigCheck
     'cr' => "\r"
   }.freeze
 
-  @indent_types = {
+  @whitespace = {
     'tab' => "\t",
     'space' => ' '
   }.freeze
@@ -37,9 +37,9 @@ module EditorConfigCheck
     indent = line[/^[\t ]+/]
     return if indent.nil?
     raise "Non #{indent_type} indentation found"\
-      if /(?!#{@indent_types[indent_type]})/ =~ indent
+      if !indent[/(?!#{@whitepace[indent_type]})/].nil?
     raise 'Incorrect indent size found'\
-          if (indent.count(@indent_types[indent_type]) % indent_size).nonzero?
+          if (indent.count(@whitespace[indent_type]) % indent_size).nonzero?
   end
 
   def self.check_trailing_whitespace(line)

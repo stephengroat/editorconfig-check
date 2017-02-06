@@ -1,5 +1,3 @@
-#require_relative 'lib/editorconfig-check/version'
-
 Gem::Specification.new do |s|
   s.name = 'editorconfig-check'
   s.version = '0.1'

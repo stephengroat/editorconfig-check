@@ -35,6 +35,7 @@ module EditorConfigCheck
 
   def self.check_indentation(line, indent_type, indent_size)
     indent = line[/^\s*/]
+    puts indent
     raise "Non #{indent_type} indentation found"\
       if /(?!#{@indent_types[indent_type]})/ =~ indent
     raise 'Incorrect indent size found'\

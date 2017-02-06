@@ -37,7 +37,7 @@ module EditorConfigCheck
     indent = line[/^[\t ]+/]
     return if indent.nil?
     raise "Non #{indent_type} indentation found"\
-      if !indent[/(?!#{@whitepace[indent_type]})/].nil?
+      unless indent[/(?!#{@whitepace[indent_type]})/].nil?
     raise 'Incorrect indent size found'\
           if (indent.count(@whitespace[indent_type]) % indent_size).nonzero?
   end

@@ -1,7 +1,7 @@
 require 'editorconfig'
 
 module EditorConfigCheck
-  @BYTE_ORDER_MARKS = {
+  @byte_order_marks = {
     '\xef\xbb\xbf' => 'utf-8-bom',
     '\xfe\xff' => 'utf-16be',
     '\xff\xfe' => 'utf-16le',
@@ -9,13 +9,13 @@ module EditorConfigCheck
     '\xff\xfe\x00\x00' => 'utf-32le'
   }.freeze
 
-  @LINE_ENDINGS = {
+  @line_endings = {
     'crlf' => '\r\n',
     'lf' => '\n',
     'cr' => '\r'
   }.freeze
-  
-  @INDENT = {
+
+  @indent_types = {
     'tab' => '\t',
     'space' => ' '
   }.freeze
@@ -32,17 +32,19 @@ module EditorConfigCheck
     end
   end
 
-  def self.check_indentation(line, indent_style, indent_size)
+  def self.check_indentation(line, indent_type, indent_size)
     indent = line[/^\s*/]
-    raise "Non #{indent_style} indentation found" if /(?!#{@INDENT[indent_style]})/ =~ indent 
-    raise 'Incorrect indent size found' if (indent.count(@INDENT[indent_style]) % indent_size).nonzero?
+    raise "Non #{indent_style} indentation found"\
+      if /(?!#{@ident_types[indent_type]})/ =~ indent
+    raise 'Incorrect indent size found'\
+          if (indent.count(@indent_types[indent_type]) % indent_size).nonzero?
   end
 
   def self.check_trailing_whitespace(line)
     raise 'Trailing whitespace found' unless line[/[\s]+$/].nil?
   end
-  
+
   def self.check_end_of_line(line, end_of_line)
-    raise "Incorrect end of line found" if /#{@LINE_ENDINGS[end_of_line]}/ =~ line
+    raise "Incorrect end of line found" if /#{@line_endings[end_of_line]}/ =~ line
   end
 end

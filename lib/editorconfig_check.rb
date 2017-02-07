@@ -18,7 +18,7 @@ module EditorConfigCheck
 
   @whitespace = {
     'tab' => "\t",
-    'space' => ' '
+    'space' => "\ "
   }.freeze
 
   def self.check(file)
